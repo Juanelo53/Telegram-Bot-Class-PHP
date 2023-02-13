@@ -64,7 +64,6 @@ class Router {
      * @return void
      */
     public function run(): void {
-            $loop = $this->loop;
             $data = json_decode(json: file_get_contents(filename: 'php://input'));
                 if ($data && isset($data->message)) {
                     $message = $data->message;
@@ -80,7 +79,7 @@ class Router {
                         } continue;
                     }
                 }
-            $loop->run();
+            $this->loop->run();
     }
 
     public function sendDatas(string $tipo, array $datas): \React\Promise\PromiseInterface {
